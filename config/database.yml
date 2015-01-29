@@ -1,6 +1,6 @@
 development:
   adapter: postgresql
-  database: recipe_box_developement
+  database: recipe_box_development
   template: template0
 
 test:

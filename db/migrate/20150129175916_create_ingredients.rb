@@ -3,6 +3,7 @@ class CreateIngredients < ActiveRecord::Migration
 
     create_table(:ingredients) do |t|
       t.column(:name, :string)
+      t.column(:recipe_id, :integer)
 
 
       t.timestamps()
