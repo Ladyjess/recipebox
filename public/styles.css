@@ -1,0 +1,36 @@
+body {
+  background-color:lightblue;
+
+}
+
+h1 { color:green;
+
+
+}
+
+p { color:red;
+
+}
+
+.spacing {
+  padding: 15px;
+}
+
+.jumbotron {
+  margin: auto;
+  text-align: center;
+  background-color:blue;
+}
+
+form {
+  width: 360px;
+  text-align: right;
+  margin: auto;
+  font-size: 25px;
+}
+
+
+.btn {
+  margin-top: 10px;
+  margin-right: 4px;
+}

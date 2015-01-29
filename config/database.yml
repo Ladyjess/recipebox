@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  database: recipe_box_developement
+  template: template0
+
+test:
+  adapter: postgresql
+  database: recipe_box_test
+  template: template0
