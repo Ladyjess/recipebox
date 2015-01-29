@@ -1,0 +1,30 @@
+<h1>Recipes</h1>
+
+<h3>Current list of recipes:</h3>
+
+<% if @recipes.any?() %>
+  <% @recipes.each() do |recipe| %>
+    <li>
+      <%= recipe.name() %>
+    </li>
+  <% end %>
+<% else %>
+  <p><em>The list is empty!</em></p>
+<% end %><br/ >
+
+<h3>Add a new recipe:</h3>
+
+<form action="/recipes" method="post">
+  <div class="form-group">
+    <label for="recipe_name">Name: </label>
+    <input id="recipe_name" name="recipe_name" class="form-control" type="text" />
+  </div>
+  <div class="form-group">
+    <label for="recipe_desc">Description: </label>
+    <input id="recipe_desc" name="recipe_desc" class="form-control" type="text" />
+  </div>
+
+  <button type="submit" class="btn btn-warning">Add Recipe</button>
+</form><br />
+
+<a href="/">Back</a>
