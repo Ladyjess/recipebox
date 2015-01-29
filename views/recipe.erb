@@ -5,7 +5,13 @@
 <% if @recipes.any?() %>
   <% @recipes.each() do |recipe| %>
     <li>
-      <%= recipe.name() %>
+      <a href="/recipes/<%= recipe.id() %>"><%= recipe.name() %></a>
+
+      <form class="delete-form" action="/recipes/<%= recipe.id() %>" method="post">
+        <input name="_method" type="hidden" value="delete" />
+        <button type="submit" class="btn btn-link"><span class="em-special">Delete</span></button>
+      </form>
+
     </li>
   <% end %>
 <% else %>

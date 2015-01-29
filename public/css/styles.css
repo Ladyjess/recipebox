@@ -1,9 +1,9 @@
 body {
-  background-color:lightblue;
-
+  /*background-color:lightblue;*/
+  margin: 10px;
 }
 
-h1 { color:green;
+/*h1 { color:green;
 
 
 }
@@ -33,4 +33,14 @@ form {
 .btn {
   margin-top: 10px;
   margin-right: 4px;
+}*/
+
+.delete-form {
+  display: inline;
+  padding-left: 20px;
+}
+
+.em-special {
+  color: red;
+  font-style: italic;
 }

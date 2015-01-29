@@ -20,8 +20,7 @@ post("/recipes") do
   recipe_desc = params.fetch("recipe_desc")
   recipe = Recipe.create({ :name => recipe_name,
     :description => recipe_desc })
-  @recipes = Recipe.all()
-  erb(:recipe)
+  redirect("/recipes")
 end
 
 get("/recipes/:id") do
@@ -37,6 +36,13 @@ patch("/recipes/:id") do
   @recipe = Recipe.find(recipe_id)
   @recipe.update({:name => recipe_name})
   redirect("/recipes/" + recipe_id.to_s())
+end
+
+delete("/recipes/:id") do
+  recipe_id = params.fetch("id").to_i()
+  @recipe = Recipe.find(recipe_id)
+  @recipe.delete()
+  redirect("/recipes")
 end
 
 post("/recipes/:id/ingredients") do
@@ -55,11 +61,13 @@ post("/recipes/:id/instructions") do
   redirect("/recipes/" + recipe_id.to_s())
 end
 
+get("/categories") do
+  @categories = Category.all()
+  erb(:category)
+end
 
-#
-# delete("recipes/:id") do
-#   @recipe = Recipe.find(params.fetch("id").to_i())
-#   @recipe.delete()
-#   recipe = Recipe.all()
-#   erb(:recipe)
-# end
+post("/categories") do
+  category_name = params.fetch("category")
+  Category.create({ :name => category_name })
+  redirect("/categories")
+end
