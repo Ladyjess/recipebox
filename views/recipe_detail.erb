@@ -1,0 +1,56 @@
+<h1>Detail for <%= @recipe.name %> :</h1>
+
+<% if @ingredients.any?() %>
+  <% @ingredients.each() do |ingredient| %>
+    <li><%= ingredient.name() %></li>
+  <% end %>
+<% else %>
+  <p>There are no ingredients!</p>
+<% end %>
+
+<form action="/recipes/<%= @recipe.id() %>/ingredients" method="post">
+  <div class="form-group">
+    <label for="ingredient_name">Ingredient: </label>
+    <input id="ingredient_name" name="ingredient_name" class="form-control" type="text"><br />
+
+    <button type="submit" class="btn btn-success">Add it!</button>
+
+  </div>
+
+</form><br />
+
+<h1> Instructions</h1>
+
+<% if @instructions.any?() %>
+<% @instructions.each() do |instruction| %>
+  <li><%= instruction.name %> </li>
+  <% end %>
+<% else %>
+<p> There are no instructions yet!</p>
+<% end %>
+
+
+<form action="/recipes/<%= @recipe.id() %>/instructions" method="post">
+  <div class="form-group">
+    <label for="instruction_name">Instruction: </label>
+    <input id="instruction_name" name="instruction_name" class="form-control" type="text">
+
+  </div>
+
+  <button type="submit" class="btn btn-success">Add it!</button>
+
+</form><br />
+
+<h1>Update Recipe Name:</h1>
+<form action="/recipes/<%= @recipe.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch" />
+
+  <div class="form-group">
+    <label for="recipe_name">Name:</label>
+    <input id="recipe_name" name="recipe_name" class="form-control" type="text" />
+  </div>
+
+  <button type="submit" class="btn btn-warning">Update it!</button>
+</form><br />
+
+<a href="/recipes">Go Back</a>
