@@ -23,3 +23,43 @@ post("/recipes") do
   @recipes = Recipe.all()
   erb(:recipe)
 end
+
+get("/recipes/:id") do
+  @recipe = Recipe.find(params.fetch("id").to_i)
+  @ingredients = @recipe.ingredients()
+  @instructions = @recipe.instructions()
+  erb(:recipe_detail)
+end
+
+patch("/recipes/:id") do
+  recipe_id = params.fetch("id").to_i()
+  recipe_name = params.fetch("recipe_name")
+  @recipe = Recipe.find(recipe_id)
+  @recipe.update({:name => recipe_name})
+  redirect("/recipes/" + recipe_id.to_s())
+end
+
+post("/recipes/:id/ingredients") do
+  ingredient_name = params.fetch("ingredient_name")
+  recipe_id = params.fetch("id").to_i()
+  @recipe = Recipe.find(recipe_id)
+  @recipe.ingredients().create({ :name => ingredient_name })
+  redirect("/recipes/" + recipe_id.to_s())
+end
+
+post("/recipes/:id/instructions") do
+  instruction_name = params.fetch("instruction_name")
+  recipe_id = params.fetch("id").to_i()
+  @recipe = Recipe.find(recipe_id)
+  @recipe.instructions().create({ :name => instruction_name })
+  redirect("/recipes/" + recipe_id.to_s())
+end
+
+
+#
+# delete("recipes/:id") do
+#   @recipe = Recipe.find(params.fetch("id").to_i())
+#   @recipe.delete()
+#   recipe = Recipe.all()
+#   erb(:recipe)
+# end
