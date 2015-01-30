@@ -38,6 +38,7 @@ form {
 .delete-form {
   display: inline;
   padding-left: 20px;
+  padding-right: 20px;
 }
 
 .em-special {

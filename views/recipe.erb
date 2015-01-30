@@ -12,6 +12,14 @@
         <button type="submit" class="btn btn-link"><span class="em-special">Delete</span></button>
       </form>
 
+      <% if recipe.categories().any?() %>
+        <% recipe.categories().each() do |category| %>
+          <%= category.name() %>
+        <% end %>
+      <% else %>
+        <p><em>No category assigned</em></p>
+      <% end %>
+
     </li>
   <% end %>
 <% else %>
@@ -28,6 +36,18 @@
   <div class="form-group">
     <label for="recipe_desc">Description: </label>
     <input id="recipe_desc" name="recipe_desc" class="form-control" type="text" />
+  </div>
+  <div class="form-group">
+
+    <label for="category_id">Select a category</label>
+    <select id="category_id" name="category_id" type="text">
+      <% @categories.each() do |category| %>
+      <option value="<%= category.id()%>">
+        <%= category.name() %>
+      </option>
+      <% end %>
+    </select>
+
   </div>
 
   <button type="submit" class="btn btn-warning">Add Recipe</button>

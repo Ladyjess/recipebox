@@ -12,6 +12,19 @@ end
 
 get("/recipes") do
   @recipes = Recipe.all()
+  @categories = Category.all()
+
+  # # ... VERY general 'pseudo-code' on how to iterate
+  # # ... thru categories and all recipes tied to them
+  # @categories = Category.all()
+  #
+  # @categories.each() do |category|
+  #   category.name() + '\n'
+  #   category.recipes().each() do |recipe|
+  #     '\t' + recipe.name() + '\n'
+  #   end
+  # end
+
   erb(:recipe)
 end
 
@@ -20,6 +33,8 @@ post("/recipes") do
   recipe_desc = params.fetch("recipe_desc")
   recipe = Recipe.create({ :name => recipe_name,
     :description => recipe_desc })
+  category = Category.find(params.fetch("category_id").to_i())
+  recipe.categories().push(category)
   redirect("/recipes")
 end
 
